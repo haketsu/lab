@@ -6,6 +6,25 @@ $users=array(
 $login = filter_var(trim($_POST['login']),FILTER_SANITIZE_STRING);
 $password = filter_var(trim($_POST['password']),FILTER_SANITIZE_STRING);
 $error = "";
+for ($i=0; $i < strlen($login); $i++) {
+    $uppers = ($login[$i] >= 'A' && $login[$i] <= 'Z');
+    $lowers = ($login[$i] >= 'a' && $login[$i] <= 'z');
+    $numbers = ($login[$i] >= '0' && $login[$i] <= '9');
+
+    if (!$uppers && !$lowers && !$numbers) {
+        $error =  "Недопустимые символы в логине";
+    }
+}
+
+for ($i=0; $i < strlen($password); $i++) {
+    $uppers = ($password[$i] >= 'A' && $password[$i] <= 'Z');
+    $lowers = ($password[$i] >= 'a' && $password[$i] <= 'z');
+    $numbers = ($password[$i] >= '0' && $password[$i] <= '9');
+
+    if (!$uppers && !$lowers && !$numbers) {
+        $error =  "Недопустимые символы в пароле";
+    }
+}
 if ($error === "" ) {
     if (isset($users[$login])) {
         if ($users[$login] === $password) {
@@ -14,10 +33,10 @@ if ($error === "" ) {
             header("location: schedule.php");
 
         } else {
-            echo "Неверный пароль";
+            $error =  "Неверный пароль";
         }
     } else {
-        echo "Такой логин не существует";
+        $error =  "Такой логин не существует";
     }
 }
 ?>

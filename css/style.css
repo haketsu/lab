@@ -1,0 +1,29 @@
+
+.sch_name{
+	text-align:center;
+}
+.navbar-brand{
+	margin-left:50px;
+	
+}
+.pic{
+	display:block;
+	margin:auto;
+}
+.card{
+	vertical-align:bottom;
+	width:350px;
+	margin:15px;
+	margin-left:50px;
+}
+.card-body{
+	text-align:center;
+}
+.classlist{
+	margin:50px;
+}
+form{
+	width:300px;
+	margin:auto;
+	margin-top:50px;
+}
